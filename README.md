@@ -111,23 +111,32 @@ Principais arquivos:
 - **urls**:
 - **views**:
 
-## Criando primeiro flixo
-### Criar uma view
+## Criando primeiro fluxo
+### Criar uma views da Aplicação
 Arquivo: *api/views.py*
 ```
-import datetime
+kimport datetime
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 def get_datetime(request):
     return JsonResponse({"datetime": datetime.datetime.utcnow()})
 ```
-### Criar api/urls.py
+### Criar urls da Aplicação
+Arquivo: api/urls.py
+```
+from django.urls import path
 
-1. Preparar ambiente
-	1. criar api/urls.py
-	2. Configurações em saphira/settings.py
-		1. *Desafio*: adicionar aplicação em INSTALLED_APPS
+from . import views
+
+urlpatterns = [
+    path("", views.get_datetime, name="get_datetime"),
+]
+```
+### Configurações em saphira/urls.py
+```
+path("api/", include("api.urls")),
+```
 # Tarefas
 *Material*
 - [] - Planejar e documentar explicação sobre Servidores Web
