@@ -20,15 +20,14 @@
 		1. criar api/urls.py
 		2. Configurações em saphira/settings.py
 			1. *Desafio*: adicionar aplicação em INSTALLED_APPS
-	3. views.py
+	3. api/views.py
 		2. *Desafio*: criar uma view get_datetime
 		2. JsonResponse
-	4. urls.py
+	4. api/urls.py
 		1. Função django.urls.path: rota e view
 		2. *Desafio*: Criar um endpoint get_datetime
-
-5. settings.py
-	
+	5. saphira.urls.py
+		1. Adicionar urls da aplicação api
 6. models.py
 	8. *Desafio*: implementar tabelas do banco de dados
 7. Migrate
@@ -137,6 +136,22 @@ urlpatterns = [
 ```
 path("api/", include("api.urls")),
 ```
+
+## Banco de dados
+As configurações do banco de dados estão em saphira/settings.py.
+### Tabelas
+Usuario
+- nomeCompleto
+- email
+- cpf
+Palestra
+- titulo
+- descriçao
+Presença
+- Usuario
+- Palestra
+- presencial
+
 # Tarefas
 *Material*
 - [] - Planejar e documentar explicação sobre Servidores Web
