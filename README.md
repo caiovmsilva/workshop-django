@@ -144,9 +144,11 @@ Usuario
 - nomeCompleto
 - email
 - cpf
+
 Palestra
 - titulo
 - descriçao
+
 Presença
 - Usuario
 - Palestra
@@ -158,3 +160,4 @@ Presença
 - [] - Descrever principais arquivos (urls e views) ao criar uma aplicação
 **Documentação**
 - [] - No README, alterar demonstração da árvore de diretórios, usar print do vscode
+- [] - Organizar formatação do README
