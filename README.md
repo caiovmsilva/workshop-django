@@ -107,16 +107,9 @@ Componentes:
 django-admin startproject saphira
 ```
 Diretórios e arquivos criados:
-```
-saphira/
-    saphira/
-        __init__.py
-        settings.py
-        urls.py
-        asgi.py
-        wsgi.py
-        manage.py
-```
+
+![Estrutura de repositórios criada](https://github.com/Anemaygi/workshop-django/assets/62656745/1794f390-3aac-48f0-99f0-eb262b6d23b4)
+
 
 Rodar projeto:
 
@@ -132,17 +125,8 @@ python manage.py startapp api
 
 Estrutura de diretórios criada:
 
-```
-api/
-    __init__.py
-    admin.py
-    apps.py
-    migrations/
-        __init__.py
-    models.py
-    tests.py
-    views.py
-```
+![Estrutura de repositórios criada](https://github.com/Anemaygi/workshop-django/assets/62656745/93ec070b-9e17-4b29-a791-939e8a7eac92)
+
 
 Principais arquivos:
 
