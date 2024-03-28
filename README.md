@@ -102,7 +102,7 @@ Componentes:
 
 **Projeto Django**: um conjunto de aplicações.
 
-### Criando projeto Django
+### Criando projeto Django [etapa0]
 ```
 django-admin startproject saphira
 ```
@@ -117,7 +117,7 @@ Rodar projeto:
 python manage.py runserver
 ```
 
-### Criando uma Aplicação
+### Criando uma Aplicação [etapa1]
 
 ```
 python manage.py startapp api
