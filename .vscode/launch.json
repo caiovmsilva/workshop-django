@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug: runserver",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/workspaces/workshop-django/saphira/manage.py",
+            "console": "integratedTerminal",
+            "args": [
+                "runserver",
+                "--no-color",
+                "--noreload"
+            ]
+        }
+    ]
+}
