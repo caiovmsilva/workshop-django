@@ -16,26 +16,26 @@ Ao finalizar o curso, você:
 <br/><br/>
 
 # :bookmark_tabs: Sumário de tópicos
-1. Instalar ferramentas
+1. [Instalar ferramentas](#electric_plug-1-instalar-ferramentas)
 	1. Python3
 	2. Django
-2. Servidores Web 
-3. Projeto e Aplicação
+2. [Servidores Web](#cloud-2-servidores-web) 
+3. [Projeto e Aplicação](#bell-3-projeto-e-aplicação)
 	1. :bulb: *Desafio*: criar um projeto Django
 	2. :bulb: *Desafio*: criar uma aplicação Django
-4. Criando primeiro fluxo :bulb: *Desafio*
-	1. Criar uma view
-	2. Criar uma url
-6. Banco de dados
+4. [Criando primeiro fluxo](#loop-4-criando-primeiro-fluxo) 
+	1. :bulb: *Desafio*: Criar uma view
+	2. :bulb: *Desafio*: Criar uma url
+6. [Banco de dados](#game_die-5-banco-de-dados)
 	1. :bulb: *Desafio*: Criação das tabelas
-7. Fluxo com parâmetros
+7. [Fluxo com parâmetros](#loop-6-fluxo-com-parâmetros)
 	1. :bulb: *Desafio*: criar fluxo com parâmetros
-8. CRUD
+8. [CRUD](#computer_mouse-7-crud)
 	1. :bulb: *Desafio*: Read
 	2. :bulb: *Desafio*: Create 
 	3. :bulb: *Desafio*: Delete
 	4. :bulb: *Desafio*: Update
-9. Comandos mais utilizados
+9. [Comandos mais utilizados](#keyboard-comandos-mais-utilizados)
 	1. Rodar projeto Django
 	2. Trocar de branch
 	3. Verificar alterações
@@ -68,18 +68,24 @@ Verificar se foi instalado:
 python -m django --version
 ```
 
+<br/>
 
 ## :cloud: 2. Servidores Web
 
-[imagem1]
+![image](https://github.com/petsi-each/workshop-django/assets/62656745/53b54d5f-0427-4cd3-b176-1589991b6997)
+
 Comunicação: por meio de troca de mensagens
+
+<br/>
 
 ## :bell: 3. Projeto e Aplicação
 
 **Projeto Django**: um conjunto de aplicações.
 **Aplicações**: serviços que vão estar rodando no servidor.
 
-### Criando projeto Django <span style="color:orange">[etapa0]</span>
+### Criando projeto Django 
+
+> 🌱 Branch: [etapa0](https://github.com/petsi-each/workshop-django/tree/etapa0)
 
 ```shell
 django-admin startproject saphira
@@ -100,7 +106,9 @@ cd /workspaces/workshop-django/saphira/
 python manage.py runserver
 ```
 
-### Criando uma Aplicação <span style="color:orange">[etapa1]</span>
+### Criando uma Aplicação
+
+> 🌱 Branch: [etapa1](https://github.com/petsi-each/workshop-django/tree/etapa1)
 
 ```shell
 python manage.py startapp api
@@ -114,7 +122,11 @@ Principais arquivos: **urls** e **views**
 
 Configurações em `saphira/settings.py`
 
-## :loop: 4. Criando primeiro fluxo <span style="color:orange">[etapa2]</span>
+<br/>
+
+## :loop: 4. Criando primeiro fluxo 
+
+> 🌱 Branch: [etapa2](https://github.com/petsi-each/workshop-django/tree/etapa2)
 
 ### Criar uma view
 
@@ -153,7 +165,9 @@ from django.urls import include
 path("api/", include("api.urls"))
 ```
 
-## :game_die: 5. Banco de dados <span style="color:orange">[etapa3]</span>
+## :game_die: 5. Banco de dados 
+
+> 🌱 Branch: [etapa3](https://github.com/petsi-each/workshop-django/tree/etapa3)
 
 As configurações do banco de dados estão em `saphira/settings.py`
 
@@ -185,6 +199,8 @@ class Presenca(models.Model):
     presencial = models.BooleanField(default=False)
 ```
 
+![2](https://github.com/petsi-each/workshop-django/assets/62656745/b28260d9-39c2-4646-8be2-c2df294cf229)
+
 **Make migration**: informar ao Django que foram realizadas alterações no banco de dados.
 
 ```ssh
@@ -203,7 +219,11 @@ Fazer migração:
 python manage.py migrate
 ```
 
-## :loop: 6. Fluxo com parâmetros <span style="color:orange">[etapa4]</span>
+<br/>
+
+## :loop: 6. Fluxo com parâmetros 
+
+> 🌱 Branch: [etapa4](https://github.com/petsi-each/workshop-django/tree/etapa4)
 
 Adicionar uma nova *url* `api/urls.py`
 
@@ -218,9 +238,14 @@ def get_texto(request, texto):
 	return HttpResponse("O texto escolhido foi '{}'".format(texto))
 ```
 
-## 7. CRUD
+<br/>
 
-### Read <span style="color:orange">[etapa5]</span>
+## :computer_mouse: 7. CRUD
+
+### Read 
+
+> 🌱 Branch: [etapa5](https://github.com/petsi-each/workshop-django/tree/etapa5)
+
 Objetivo: pegar todos os usuários cadastrados no banco de dados
 
 Adicionar uma nova *url* `api/urls.py`
@@ -246,7 +271,10 @@ def get_usuarios(request):
 ```
 
 
-### Create <span style="color:orange">[etapa6]</span>
+### Create
+
+> 🌱 Branch: [etapa6](https://github.com/petsi-each/workshop-django/tree/etapa6)
+
 Request Parameters
 ```
 /api?email=franciscoogjr@usp.br&nomeCompleto=Francisco%20Gomes
@@ -278,7 +306,9 @@ Nova rota:
 api/usuario/add?nomeCompleto=&email=&cpf=
 ```
 
-### Delete <span style="color:orange">[etapa7]</span>
+### Delete 
+
+> 🌱 Branch: [etapa7](https://github.com/petsi-each/workshop-django/tree/etapa7)
 
 ```python
 path("usuario/delete/<cpf>", views.delete_usuario, name="delete_usuario")
@@ -297,7 +327,9 @@ def delete_usuario(request, cpf):
     return HttpResponse("Usuario {} deletado com sucesso".format(nomeCompleto))
 ```
 
-### Update <span style="color:orange">[etapa8]</span>
+### Update 
+
+> 🌱 Branch: [etapa8](https://github.com/petsi-each/workshop-django/tree/etapa8)
 
 ```python
 path("usuario/update/<cpf>", views.update_usuario, name="update_usuario")
@@ -312,7 +344,9 @@ def update_usuario(request, cpf):
     return HttpResponse("Dados do usuario atualizado")
 ```
 
-## Comandos mais utilizados
+<br/>
+
+## :keyboard: Comandos mais utilizados
 
 ### Rodar projeto Django
 
@@ -341,7 +375,7 @@ git diff
 ```
 
 
-<br/><br/>
+<br/>
 
 # :books: Referências e materiais complementares
 
