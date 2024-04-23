@@ -17,4 +17,16 @@ def get_usuarios(request):
     for usuario in usuarios:
         resposta += f"Nome: {usuario['nomeCompleto']}, CPF: {usuario['cpf']}, E-mail: {usuario['email']}\n"
 
-    return HttpResponse(resposta)
+    return HttpResponse(resposta, content_type="text/plain")
+
+def add_usuario(request):
+
+    nomeCompleto = request.GET['nomeCompleto']
+    email = request.GET['email']
+    cpf = request.GET['cpf']
+
+    novo_usuario = Usuario(nomeCompleto=nomeCompleto, email=email, cpf=cpf)
+
+    novo_usuario.save()
+
+    return HttpResponse("Cadastro de {} realizado com sucesso".format(nomeCompleto))
