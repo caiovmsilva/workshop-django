@@ -19,39 +19,26 @@ Ao finalizar o curso, você:
 1. Instalar ferramentas
 	1. Python3
 	2. Django
-	3. curl (ferramenta pra fazer requisições RESTs)
 2. Servidores Web 
-	1. Componentes: Aplicação, Banco de Dados
-	2. Comunicação entre Cliente <-> Aplicação
-		1. Tipos de requisições
-		2. JSON para enviar e receber dados
-	3. Comunicação entre Aplicação <-> Banco de Dados
-3. Criando projeto Django
+3. Projeto e Aplicação
 	1. :bulb: *Desafio*: criar um projeto Django
-	2. urls.py
-4. Criando aplicação Django
-	1. *Desafio*: criar uma aplicação Django
-	2. Preparar ambiente
-		1. criar api/urls.py
-		2. Configurações em saphira/settings.py
-			1. :bulb: *Desafio*: adicionar aplicação em INSTALLED_APPS
-	3. api/views.py
-		1. :bulb: *Desafio*: criar uma view get_datetime
-		2. JsonResponse
-	4. api/urls.py
-		1. Função django.urls.path: rota e view
-		2. *Desafio*: Criar um endpoint get_datetime
-	5. saphira.urls.py
-		1. Adicionar urls da aplicação api
-6. models.py
-	1. *Desafio*: implementar tabelas do banco de dados
-7. Migrate
-	1. *Desafio*: realizar migração
-8. Aprimorando aplicação
-	1. urls com parâmetros
-	2. views com parâmetros
-	3. *Desafio*: implementar fluxo com parâmetros
-9. Implementar CRUD
+	2. :bulb: *Desafio*: criar uma aplicação Django
+4. Criando primeiro fluxo :bulb: *Desafio*
+	1. Criar uma view
+	2. Criar uma url
+6. Banco de dados
+	1. :bulb: *Desafio*: Criação das tabelas
+7. Fluxo com parâmetros
+	1. :bulb: *Desafio*: criar fluxo com parâmetros
+8. CRUD
+	1. :bulb: *Desafio*: Read
+	2. :bulb: *Desafio*: Create 
+	3. :bulb: *Desafio*: Delete
+	4. :bulb: *Desafio*: Update
+9. Comandos mais utilizados
+	1. Rodar projeto Django
+	2. Trocar de branch
+	3. Verificar alterações
 
 <br/><br/>
 
@@ -63,63 +50,59 @@ Ao finalizar o curso, você:
 
 Verificar se já veio instalado
 
-```
+```shell
 python --version
-```
-
-### **curl**
-
-Verificar se já veio instalado
-
-```
-curl --version
 ```
 
 ### **Django**
 
 Instalar:
-```
+
+```shell
 python -m pip install Django
 ```
+
 Verificar se foi instalado:
-```
+
+```shell
 python -m django --version
 ```
 
 
 ## :cloud: 2. Servidores Web
 
-Canva: link
-
-Componentes:
-- Cliente / Front
-- Aplicação
-- Banco de dados
+[imagem1]
+Comunicação: por meio de troca de mensagens
 
 ## :bell: 3. Projeto e Aplicação
 
+**Projeto Django**: um conjunto de aplicações.
 **Aplicações**: serviços que vão estar rodando no servidor.
 
-**Projeto Django**: um conjunto de aplicações.
+### Criando projeto Django <span style="color:orange">[etapa0]</span>
 
-### Criando projeto Django
-```
+```shell
 django-admin startproject saphira
 ```
+
 Diretórios e arquivos criados:
 
 ![Estrutura de repositórios criada](https://github.com/Anemaygi/workshop-django/assets/62656745/1794f390-3aac-48f0-99f0-eb262b6d23b4)
 
-
 Rodar projeto:
+Abrir diretório do arquivo `manage.py`
 
+```shell
+cd /workspaces/workshop-django/saphira/
 ```
+``
+```shell
 python manage.py runserver
 ```
 
-### Criando uma Aplicação
+### Criando uma Aplicação <span style="color:orange">[etapa1]</span>
 
-```
+```shell
 python manage.py startapp api
 ```
 
@@ -127,19 +110,18 @@ Estrutura de diretórios criada:
 
 ![Estrutura de repositórios criada](https://github.com/Anemaygi/workshop-django/assets/62656745/93ec070b-9e17-4b29-a791-939e8a7eac92)
 
+Principais arquivos: **urls** e **views**
 
-Principais arquivos:
+Configurações em `saphira/settings.py`
 
-- **urls**:
-- **views**:
+## :loop: 4. Criando primeiro fluxo <span style="color:orange">[etapa2]</span>
 
-## :loop: 4. Criando primeiro fluxo
+### Criar uma view
 
-### Criar uma views da Aplicação
+Arquivo: `api/views.py`
 
-Arquivo: *api/views.py*
-```
-kimport datetime
+```python
+import datetime
 
 from django.http import HttpResponse, JsonResponse
 
@@ -147,11 +129,11 @@ def get_datetime(request):
     return JsonResponse({"datetime": datetime.datetime.utcnow()})
 ```
 
-### Criar urls da Aplicação
+### Criar url
 
-Arquivo: api/urls.py
+Arquivo: `api/urls.py`
 
-```
+```python
 from django.urls import path
 
 from . import views
@@ -161,34 +143,208 @@ urlpatterns = [
 ]
 ```
 
-### Configurações em saphira/urls.py
+#### Configurações em `saphira/urls.py`
 
+```python
+from django.urls import include
 ```
-path("api/", include("api.urls")),
+
+```python
+path("api/", include("api.urls"))
 ```
 
-## :game_die: 5. Banco de dados
+## :game_die: 5. Banco de dados <span style="color:orange">[etapa3]</span>
 
-As configurações do banco de dados estão em saphira/settings.py.
+As configurações do banco de dados estão em `saphira/settings.py`
+
+Adicionar aplicação *api* no projeto *Saphira* `settings.py`:
+
+```python
+api.apps.ApiConfig
+```
 
 ### Tabelas
 
-Usuario
-- nomeCompleto
-- email
-- cpf
+Adicionar tabelas do banco de dados: `api/models.py`
 
-Palestra
-- titulo
-- descriçao
+```python
+from django.db import models
 
-Presença
-- Usuario
-- Palestra
-- presencial
+class Usuario(models.Model):
+    nomeCompleto = models.CharField(max_length=200)
+    email = models.EmailField()
+    cpf = models.CharField(max_length=14)
+
+class Palestra(models.Model):
+    titulo = models.CharField(max_length=200)
+    descricao = models.TextField()
+
+class Presenca(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    palestra = models.ForeignKey(Palestra, on_delete=models.CASCADE)
+    presencial = models.BooleanField(default=False)
+```
+
+**Make migration**: informar ao Django que foram realizadas alterações no banco de dados.
+
+```ssh
+python manage.py makemigrations api
+```
+
+Ver alterações feita pela migração:
+
+```ssh
+python3 manage.py sqlmigrate api 0001
+```
+
+Fazer migração:
+
+```ssh
+python manage.py migrate
+```
+
+## :loop: 6. Fluxo com parâmetros <span style="color:orange">[etapa4]</span>
+
+Adicionar uma nova *url* `api/urls.py`
+
+```python
+path("texto/<texto>", views.get_texto, name="get_texto")
+```
+
+Adicionar uma nova *view* `views.py`
+
+```python
+def get_texto(request, texto):
+	return HttpResponse("O texto escolhido foi '{}'".format(texto))
+```
+
+## 7. CRUD
+
+### Read <span style="color:orange">[etapa5]</span>
+Objetivo: pegar todos os usuários cadastrados no banco de dados
+
+Adicionar uma nova *url* `api/urls.py`
+
+```python
+path("usuarios", views.get_usuarios, name="get_usuarios")
+```
+
+Adicionar uma nova *view* `api/views.py`
+
+```python
+from .models import *
+
+
+def get_usuarios(request):
+    usuarios = Usuario.objects.all().values('nomeCompleto', 'cpf', 'email')
+
+    resposta = "= BANCO DE DADOS =\n"
+    for usuario in usuarios:
+        resposta += f"Nome: {usuario['nomeCompleto']}, CPF: {usuario['cpf']}, E-mail: {usuario['email']}\n"
+
+    return HttpResponse(resposta, content_type="text/plain")
+```
+
+
+### Create <span style="color:orange">[etapa6]</span>
+Request Parameters
+```
+/api?email=franciscoogjr@usp.br&nomeCompleto=Francisco%20Gomes
+```
+
+Adicionar uma nova *url* `api/urls.py`
+
+```python
+path("usuario/add", views.add_usuario, name="add_usuario")
+```
+
+Adicionar uma nova *view* `api/views.py`
+
+```python
+def add_usuario(request):
+    nomeCompleto = request.GET['nomeCompleto']
+    email = request.GET['email']
+    cpf = request.GET['cpf']
+
+    novo_usuario = Usuario(nomeCompleto=nomeCompleto, email=email, cpf=cpf)
+
+    novo_usuario.save()  
+
+    return JsonResponse({'mensagem':f'{nomeCompleto} cadastrado'})
+```
+
+Nova rota:
+```
+api/usuario/add?nomeCompleto=&email=&cpf=
+```
+
+### Delete <span style="color:orange">[etapa7]</span>
+
+```python
+path("usuario/delete/<cpf>", views.delete_usuario, name="delete_usuario")
+```
+
+Adicionar uma nova *view* `api/views.py`
+
+```python
+def delete_usuario(request, cpf):
+    usuario = Usuario.objects.get(cpf=cpf)
+
+    nomeCompleto = usuario.nomeCompleto
+
+    usuario.delete()
+
+    return HttpResponse("Usuario {} deletado com sucesso".format(nomeCompleto))
+```
+
+### Update <span style="color:orange">[etapa8]</span>
+
+```python
+path("usuario/update/<cpf>", views.update_usuario, name="update_usuario")
+```
+
+```python
+def update_usuario(request, cpf):
+    novo_email = request.GET['email']
+
+    Usuario.objects.filter(cpf=cpf).update(email=novo_email)
+
+    return HttpResponse("Dados do usuario atualizado")
+```
+
+## Comandos mais utilizados
+
+### Rodar projeto Django
+
+Entrada no diretório do arquivo `manage.py`:
+
+```shell
+cd /workspaces/workshop-django/saphira/
+```
+
+Comando runserver
+``
+```shell
+python manage.py runserver
+```
+
+### Trocar de branch
+
+```bash
+git checkout <nome_da_branch>
+```
+
+### Verificar alterações
+
+```bash
+git diff
+```
+
 
 <br/><br/>
 
 # :books: Referências e materiais complementares
 
 - [Documentação oficial do Django](https://docs.djangoproject.com/en/5.0/)
+- [Query-parameters](https://djangocentral.com/capturing-query-parameters-of-requestget-in-django/)
+
