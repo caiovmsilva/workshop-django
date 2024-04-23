@@ -19,23 +19,23 @@ Ao finalizar o curso, você:
 1. [Instalar ferramentas](#electric_plug-1-instalar-ferramentas)
 	1. Python3
 	2. Django
-2. Servidores Web 
-3. Projeto e Aplicação
+2. [Servidores Web](#cloud-2-servidores-web) 
+3. [Projeto e Aplicação](#bell-3-projeto-e-aplicação)
 	1. :bulb: *Desafio*: criar um projeto Django
 	2. :bulb: *Desafio*: criar uma aplicação Django
-4. Criando primeiro fluxo :bulb: *Desafio*
-	1. Criar uma view
-	2. Criar uma url
-6. Banco de dados
+4. [Criando primeiro fluxo](#loop-4-criando-primeiro-fluxo) 
+	1. :bulb: *Desafio*: Criar uma view
+	2. :bulb: *Desafio*: Criar uma url
+6. [Banco de dados](#game_die-5-banco-de-dados)
 	1. :bulb: *Desafio*: Criação das tabelas
-7. Fluxo com parâmetros
+7. [Fluxo com parâmetros](#loop-6-fluxo-com-parâmetros)
 	1. :bulb: *Desafio*: criar fluxo com parâmetros
-8. CRUD
+8. [CRUD](#computer_mouse-7-crud)
 	1. :bulb: *Desafio*: Read
 	2. :bulb: *Desafio*: Create 
 	3. :bulb: *Desafio*: Delete
 	4. :bulb: *Desafio*: Update
-9. Comandos mais utilizados
+9. [Comandos mais utilizados](#keyboard-comandos-mais-utilizados)
 	1. Rodar projeto Django
 	2. Trocar de branch
 	3. Verificar alterações
