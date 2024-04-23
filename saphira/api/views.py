@@ -40,3 +40,9 @@ def delete_usuario(request, cpf):
 
     return HttpResponse("Usuario {} deletado com sucesso".format(nomeCompleto))
 
+def update_usuario(request, cpf):
+    novo_email = request.GET['email']
+
+    Usuario.objects.filter(cpf=cpf).update(email=novo_email)
+
+    return HttpResponse("Dados do usuario atualizado")
