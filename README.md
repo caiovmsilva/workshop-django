@@ -68,18 +68,24 @@ Verificar se foi instalado:
 python -m django --version
 ```
 
+<br/>
 
 ## :cloud: 2. Servidores Web
 
-[imagem1]
+![image](https://github.com/petsi-each/workshop-django/assets/62656745/53b54d5f-0427-4cd3-b176-1589991b6997)
+
 Comunicação: por meio de troca de mensagens
+
+<br/>
 
 ## :bell: 3. Projeto e Aplicação
 
 **Projeto Django**: um conjunto de aplicações.
 **Aplicações**: serviços que vão estar rodando no servidor.
 
-### Criando projeto Django <span style="color:orange">[etapa0]</span>
+### Criando projeto Django 
+
+> 🌱 Branch: etapa0
 
 ```shell
 django-admin startproject saphira
@@ -100,7 +106,9 @@ cd /workspaces/workshop-django/saphira/
 python manage.py runserver
 ```
 
-### Criando uma Aplicação <span style="color:orange">[etapa1]</span>
+### Criando uma Aplicação
+
+> 🌱 Branch: etapa1
 
 ```shell
 python manage.py startapp api
@@ -114,7 +122,11 @@ Principais arquivos: **urls** e **views**
 
 Configurações em `saphira/settings.py`
 
-## :loop: 4. Criando primeiro fluxo <span style="color:orange">[etapa2]</span>
+<br/>
+
+## :loop: 4. Criando primeiro fluxo 
+
+> 🌱 Branch: etapa2
 
 ### Criar uma view
 
@@ -153,7 +165,9 @@ from django.urls import include
 path("api/", include("api.urls"))
 ```
 
-## :game_die: 5. Banco de dados <span style="color:orange">[etapa3]</span>
+## :game_die: 5. Banco de dados 
+
+> 🌱 Branch: etapa3
 
 As configurações do banco de dados estão em `saphira/settings.py`
 
@@ -185,6 +199,8 @@ class Presenca(models.Model):
     presencial = models.BooleanField(default=False)
 ```
 
+![2](https://github.com/petsi-each/workshop-django/assets/62656745/b28260d9-39c2-4646-8be2-c2df294cf229)
+
 **Make migration**: informar ao Django que foram realizadas alterações no banco de dados.
 
 ```ssh
@@ -203,7 +219,11 @@ Fazer migração:
 python manage.py migrate
 ```
 
-## :loop: 6. Fluxo com parâmetros <span style="color:orange">[etapa4]</span>
+<br/>
+
+## :loop: 6. Fluxo com parâmetros 
+
+> 🌱 Branch: etapa4
 
 Adicionar uma nova *url* `api/urls.py`
 
@@ -218,9 +238,14 @@ def get_texto(request, texto):
 	return HttpResponse("O texto escolhido foi '{}'".format(texto))
 ```
 
-## 7. CRUD
+<br/>
 
-### Read <span style="color:orange">[etapa5]</span>
+## :computer_mouse: 7. CRUD
+
+### Read 
+
+> 🌱 Branch: etapa5
+
 Objetivo: pegar todos os usuários cadastrados no banco de dados
 
 Adicionar uma nova *url* `api/urls.py`
@@ -246,7 +271,10 @@ def get_usuarios(request):
 ```
 
 
-### Create <span style="color:orange">[etapa6]</span>
+### Create
+
+> 🌱 Branch: etapa6
+
 Request Parameters
 ```
 /api?email=franciscoogjr@usp.br&nomeCompleto=Francisco%20Gomes
@@ -278,7 +306,9 @@ Nova rota:
 api/usuario/add?nomeCompleto=&email=&cpf=
 ```
 
-### Delete <span style="color:orange">[etapa7]</span>
+### Delete 
+
+> 🌱 Branch: etapa7
 
 ```python
 path("usuario/delete/<cpf>", views.delete_usuario, name="delete_usuario")
@@ -297,7 +327,9 @@ def delete_usuario(request, cpf):
     return HttpResponse("Usuario {} deletado com sucesso".format(nomeCompleto))
 ```
 
-### Update <span style="color:orange">[etapa8]</span>
+### Update 
+
+> 🌱 Branch: etapa8
 
 ```python
 path("usuario/update/<cpf>", views.update_usuario, name="update_usuario")
@@ -312,7 +344,9 @@ def update_usuario(request, cpf):
     return HttpResponse("Dados do usuario atualizado")
 ```
 
-## Comandos mais utilizados
+<br/>
+
+## :keyboard: Comandos mais utilizados
 
 ### Rodar projeto Django
 
@@ -341,7 +375,7 @@ git diff
 ```
 
 
-<br/><br/>
+<br/>
 
 # :books: Referências e materiais complementares
 
