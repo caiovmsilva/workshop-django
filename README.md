@@ -85,7 +85,7 @@ Comunicação: por meio de troca de mensagens
 
 ### Criando projeto Django 
 
-> 🌱 Branch: etapa0
+> 🌱 Branch: [etapa0](https://github.com/petsi-each/workshop-django/tree/etapa0)
 
 ```shell
 django-admin startproject saphira
@@ -108,7 +108,7 @@ python manage.py runserver
 
 ### Criando uma Aplicação
 
-> 🌱 Branch: etapa1
+> 🌱 Branch: [etapa1](https://github.com/petsi-each/workshop-django/tree/etapa1)
 
 ```shell
 python manage.py startapp api
@@ -126,7 +126,7 @@ Configurações em `saphira/settings.py`
 
 ## :loop: 4. Criando primeiro fluxo 
 
-> 🌱 Branch: etapa2
+> 🌱 Branch: [etapa2](https://github.com/petsi-each/workshop-django/tree/etapa2)
 
 ### Criar uma view
 
@@ -167,7 +167,7 @@ path("api/", include("api.urls"))
 
 ## :game_die: 5. Banco de dados 
 
-> 🌱 Branch: etapa3
+> 🌱 Branch: [etapa3](https://github.com/petsi-each/workshop-django/tree/etapa3)
 
 As configurações do banco de dados estão em `saphira/settings.py`
 
@@ -223,7 +223,7 @@ python manage.py migrate
 
 ## :loop: 6. Fluxo com parâmetros 
 
-> 🌱 Branch: etapa4
+> 🌱 Branch: [etapa4](https://github.com/petsi-each/workshop-django/tree/etapa4)
 
 Adicionar uma nova *url* `api/urls.py`
 
@@ -244,7 +244,7 @@ def get_texto(request, texto):
 
 ### Read 
 
-> 🌱 Branch: etapa5
+> 🌱 Branch: [etapa5](https://github.com/petsi-each/workshop-django/tree/etapa5)
 
 Objetivo: pegar todos os usuários cadastrados no banco de dados
 
@@ -273,7 +273,7 @@ def get_usuarios(request):
 
 ### Create
 
-> 🌱 Branch: etapa6
+> 🌱 Branch: [etapa6](https://github.com/petsi-each/workshop-django/tree/etapa6)
 
 Request Parameters
 ```
@@ -308,7 +308,7 @@ api/usuario/add?nomeCompleto=&email=&cpf=
 
 ### Delete 
 
-> 🌱 Branch: etapa7
+> 🌱 Branch: [etapa7](https://github.com/petsi-each/workshop-django/tree/etapa7)
 
 ```python
 path("usuario/delete/<cpf>", views.delete_usuario, name="delete_usuario")
@@ -329,7 +329,7 @@ def delete_usuario(request, cpf):
 
 ### Update 
 
-> 🌱 Branch: etapa8
+> 🌱 Branch: [etapa8](https://github.com/petsi-each/workshop-django/tree/etapa8)
 
 ```python
 path("usuario/update/<cpf>", views.update_usuario, name="update_usuario")
