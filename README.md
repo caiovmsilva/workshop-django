@@ -16,7 +16,7 @@ Ao finalizar o curso, você:
 <br/><br/>
 
 # :bookmark_tabs: Sumário de tópicos
-1. Instalar ferramentas
+1. [Instalar ferramentas](#electric_plug-1-instalar-ferramentas)
 	1. Python3
 	2. Django
 2. Servidores Web 
