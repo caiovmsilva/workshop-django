@@ -11,7 +11,10 @@ def get_texto(request, texto):
     return HttpResponse("O texto escolhido foi '{}'".format(texto))
 
 def get_usuarios(request):
+    usuarios = Usuario.objects.all().values('nomeCompleto', 'cpf', 'email')
 
-    usuarios = [usurio.nomeCompleto for usurio in Usuario.objects.all()]
+    resposta = "="
+    for usuario in usuarios:
+        resposta += f"Nome: {usuario['nomeCompleto']}, CPF: {usuario['cpf']}, E-mail: {usuario['email']}\n"
 
-    return JsonResponse(usuarios, safe=False)
+    return HttpResponse(resposta, content_type="text/plain")
