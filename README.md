@@ -63,7 +63,7 @@ Ao finalizar o curso, você:
 
 Verificar se já veio instalado
 
-```
+```bash
 python --version
 ```
 
@@ -71,18 +71,18 @@ python --version
 
 Verificar se já veio instalado
 
-```
+```bash
 curl --version
 ```
 
 ### **Django**
 
 Instalar:
-```
+```bash
 python -m pip install Django
 ```
 Verificar se foi instalado:
-```
+```bash
 python -m django --version
 ```
 
@@ -102,8 +102,8 @@ Componentes:
 
 **Projeto Django**: um conjunto de aplicações.
 
-### Criando projeto Django
-```
+### Criando projeto Django <span style="color:orange">[etapa0]</span>.
+```bash
 django-admin startproject saphira
 ```
 Diretórios e arquivos criados:
@@ -113,13 +113,13 @@ Diretórios e arquivos criados:
 
 Rodar projeto:
 
-```
+```bash
 python manage.py runserver
 ```
 
-### Criando uma Aplicação
+### Criando uma Aplicação <span style="color:orange">[etapa1]</span>
 
-```
+```bash
 python manage.py startapp api
 ```
 
@@ -133,13 +133,13 @@ Principais arquivos:
 - **urls**:
 - **views**:
 
-## :loop: 4. Criando primeiro fluxo
+## :loop: 4. Criando primeiro fluxo <span style="color:orange">[etapa2]</span>
 
 ### Criar uma views da Aplicação
 
 Arquivo: *api/views.py*
-```
-kimport datetime
+```python
+import datetime
 
 from django.http import HttpResponse, JsonResponse
 
@@ -151,7 +151,7 @@ def get_datetime(request):
 
 Arquivo: api/urls.py
 
-```
+```python
 from django.urls import path
 
 from . import views
@@ -163,29 +163,85 @@ urlpatterns = [
 
 ### Configurações em saphira/urls.py
 
-```
-path("api/", include("api.urls")),
+```python
+from django.urls import include
 ```
 
-## :game_die: 5. Banco de dados
+```python
+path("api/", include("api.urls"))
+```
 
-As configurações do banco de dados estão em saphira/settings.py.
+## :game_die: 5. Banco de dados <span style="color:orange">[etapa3]</span>
+
+As configurações do banco de dados estão em <span style="color:red">saphira/settings.py</span>
+
+Fazer migração das aplicações já adicionadas:
+
+```python
+python manage.py makemigrations api
+```
+
+Adicionar aplicação *api* no projeto *Saphira*:
+
+```python
+api.apps.ApiConfig
+```
 
 ### Tabelas
 
-Usuario
-- nomeCompleto
-- email
-- cpf
+Adicionar tabelas do banco de dados: (<span style="color:red">api/models.py</span>)
 
-Palestra
-- titulo
-- descriçao
+```python
+from django.db import models
 
-Presença
-- Usuario
-- Palestra
-- presencial
+class Usuario(models.Model):
+    nomeCompleto = models.CharField(max_length=200)
+    email = models.EmailField()
+    cpf = models.CharField(max_length=14)
+
+class Palestra(models.Model):
+    titulo = models.CharField(max_length=200)
+    descricao = models.TextField()
+
+class Presenca(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    palestra = models.ForeignKey(Palestra, on_delete=models.CASCADE)
+    presencial = models.BooleanField(default=False)
+```
+
+**Make migration**: informar ao Django que foram realizadas alterações no banco de dados.
+
+```
+python manage.py makemigrations api
+```
+
+Ver alterações feita pela migração:
+
+```
+python3 manage.py sqlmigrate api 0001
+```
+
+Fazer migração:
+
+```
+python manage.py migrate
+```
+
+
+## :loop: 6. Fluxo com parâmetros
+
+Adicionar uma nova *url* (<span style="color:red">api/urls.py</span>)
+
+```python
+path("texto/<texto>", views.get_texto, name="get_texto")
+```
+
+Adicionar uma nova *view* (<span style="color:red">api/views.py</span>)
+
+```python
+def get_texto(request, texto):
+	return HttpResponse("O texto escolhido foi '{}'".format(texto))
+```
 
 <br/><br/>
 
