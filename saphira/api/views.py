@@ -30,3 +30,13 @@ def add_usuario(request):
     novo_usuario.save()
 
     return HttpResponse("Cadastro de {} realizado com sucesso".format(nomeCompleto))
+
+def delete_usuario(request, cpf):
+    usuario = Usuario.objects.get(cpf=cpf)
+
+    nomeCompleto = usuario.nomeCompleto
+
+    usuario.delete()
+
+    return HttpResponse("Usuario {} deletado com sucesso".format(nomeCompleto))
+
