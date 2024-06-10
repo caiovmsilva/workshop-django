@@ -1,0 +1,90 @@
+[
+    {
+        "model": "api.Usuario",
+        "pk": "55511199944",
+        "fields": {
+            "nomeCompleto": "Francisco Gomes Jr.",
+            "email": "FranciscoGomes@usp.br",
+            "cpf": "55511199944"
+        }
+    },
+    {
+        "model": "api.Usuario",
+        "pk": "55522299955",
+        "fields": {
+            "nomeCompleto": "Vinicius Kazuo",
+            "email": "viniciuskazuo@usp.br",
+            "cpf": "55522299955"
+        }
+    },
+    {
+        "model": "api.Usuario",
+        "pk": "55533399933",
+        "fields": {
+            "nomeCompleto": "Lucas Kledeglau",
+            "email": "lucaskled@usp.br",
+            "cpf": "55533399933"
+        }
+    },
+    {
+        "model": "api.Palestra",
+        "pk": 1,
+        "fields": {
+            "titulo": "I.A e Machine Learning",
+            "descricao": "Apresentar o tema de Inteligência Artificial e os conceitos de Machine Learning"
+        }
+    },
+    {
+        "model": "api.Palestra",
+        "pk": 2,
+        "fields": {
+            "titulo": "Entrevista de Emprego",
+            "descricao": "Dicas para uma entrevista de emprego na área de tecnologia"
+        }
+    },
+    {
+        "model": "api.Presenca",
+        "pk": "55511199944",
+        "fields": {
+            "usuario": "55511199944",
+            "palestra": "1",
+            "presencial": "False"
+        }
+    },
+    {
+        "model": "api.Presenca",
+        "pk": "55522299955",
+        "fields": {
+            "usuario": "55522299955",
+            "palestra": "1",
+            "presencial": "False"
+        }
+    },
+    {
+        "model": "api.Presenca",
+        "pk": "55533399933",
+        "fields": {
+            "usuario": "55533299933",
+            "palestra": "1",
+            "presencial": "False"
+        }
+    },
+    {
+        "model": "api.Presenca",
+        "pk": "55511199944",
+        "fields": {
+            "usuario": "55511199944",
+            "palestra": "2",
+            "presencial": "True"
+        }
+    },
+    {
+        "model": "api.Presenca",
+        "pk": "55533399933",
+        "fields": {
+            "usuario": "55533399933",
+            "palestra": "2",
+            "presencial": "True"
+        }
+    }
+]
